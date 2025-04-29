@@ -14,10 +14,6 @@ import jakarta.data.repository.Update;
 import java.util.List;
 import java.util.Optional;
 
-/**
- *
- * @author ehernandez
- */
 
 @Repository
 public interface ProductRepository {
@@ -43,7 +39,7 @@ public interface ProductRepository {
     Product delete(Product p);
     
     
-    @Query("""
+        @Query("""
            select id, name, clave, unitSale, category, zone
            from Product p 
            where trim(category) != ""

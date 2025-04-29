@@ -1,9 +1,7 @@
 package fss.api;
 
-import fss.repository.ProductRepository;
-import jakarta.enterprise.context.ApplicationScoped;
+import fss.service.ProductService;
 import jakarta.inject.Inject;
-import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -13,13 +11,13 @@ import jakarta.ws.rs.core.Response;
 import java.util.Collections;
 
 
+@Path("/products")
 @Produces(MediaType.APPLICATION_JSON) 
 @Consumes(MediaType.APPLICATION_JSON)
-@Path("/products")
 public class ProductResource {
     
  @Inject
- ProductRepository productRepository; 
+ ProductService productService; 
  
 
     @GET            
@@ -30,7 +28,7 @@ public class ProductResource {
 
     @GET        
     public Response getAllProducts() {        
-        return Response.ok(productRepository.findAllProductsSummarize()).build();
+        return Response.ok(productService.getAllProductSummarize()).build();
     }      
     
     
