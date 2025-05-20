@@ -58,7 +58,7 @@ public class CustomerService {
 
     public Optional<OrdersByCustomer> findOrdersByCustomer(Integer id) {
 
-        LocalDate fromDate = LocalDate.of(2025, 04, 01);
+        LocalDate fromDate = LocalDate.of(2025, 01, 01);
 
         CriteriaBuilder<Customer> cb = cbf.create(em, Customer.class)
                 .from(Customer.class)

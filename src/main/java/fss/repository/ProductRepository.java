@@ -7,6 +7,7 @@ import jakarta.data.repository.Delete;
 import jakarta.data.repository.Find;
 import jakarta.data.repository.Insert;
 import jakarta.data.repository.OrderBy;
+import jakarta.data.repository.Param;
 import jakarta.data.repository.Query;
 import jakarta.data.repository.Repository;
 import jakarta.data.repository.Save;
@@ -40,11 +41,11 @@ public interface ProductRepository {
     
     
         @Query("""
-           select id, name, clave, unitSale, category, zone
-           from Product p 
-           where trim(category) != ""
+           select p.id, name, clave, unitSale, category, zone, price, unitSales
+           from Product p, ProductPriceList ppl 
+           where trim(category) != "" and ppl.id.idLista = :idLista and ppl.id.idProducto=p.id
            order by name
     """)        
-    List<ProductSummary> findAllProductsSummarize();
+    List<ProductSummary> findAllProductsSummarize(@Param("idLista") int idLista);
     
 }

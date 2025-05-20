@@ -41,7 +41,7 @@ public class ProductService {
     public List<ProductSummary> getAllProductSummarize() {
         List<ProductSummary> products;
         try {
-            products = productRepository.findAllProductsSummarize();
+            products = productRepository.findAllProductsSummarize(1);
         } catch (Exception ex) {
             products = Collections.emptyList();
             ex.printStackTrace();

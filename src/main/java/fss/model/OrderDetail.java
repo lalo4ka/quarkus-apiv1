@@ -12,6 +12,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.PostLoad;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -40,19 +41,19 @@ public class OrderDetail {
     public Order order;
 
     @Column(name = "cnt")
-    public Double qty;
+    public BigDecimal qty;
 
     @Column(name = "cnt2")
-    public Double qty2;
+    public BigDecimal qty2;
 
     @Column(name = "unidad")
     public String unit;
 
     @Column(name = "precio")
-    public Double unitPrice;
+    public BigDecimal unitPrice;
     
     @Transient    
-    public Double totalAmount;
+    public BigDecimal totalAmount;
 
     @Override
     public String toString() {
@@ -62,7 +63,7 @@ public class OrderDetail {
     
     @PostLoad //Event::After an entity has been loaded from DB
     public void onPostLoad() {
-        totalAmount = qty2 * unitPrice;
+        totalAmount = qty2.multiply(unitPrice);
     }
 
 }

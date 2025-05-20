@@ -9,6 +9,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -52,10 +54,13 @@ public class ProductPriceList {
     public PriceList priceList;
 
     @Column(name = "precio")
-    public double price;
+    public BigDecimal price;
     
     @Column(name = "precio_anterior")
-    public double lastPrice;
+    public BigDecimal lastPrice;
+    
+    @Column(name = "precio_nuevo_fecha")
+    public LocalDate priceDate;
 
     @Override
     public String toString() {

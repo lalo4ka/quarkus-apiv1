@@ -43,13 +43,12 @@ record OrderDetailView(
         ProductRecord product,
         String unit,
         @Mapping("qty2*unitPrice")
-        Double totalAmount,
-        Double qty,
-        Double qty2) {
+        BigDecimal totalAmount,
+        BigDecimal qty,
+        BigDecimal qty2) {
 
-    public Double totalAmount() {
-        BigDecimal bd = new BigDecimal(this.totalAmount).setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+    public BigDecimal totalAmount() {
+        return this.totalAmount.setScale(2, RoundingMode.HALF_UP);       
     }
 
 }
