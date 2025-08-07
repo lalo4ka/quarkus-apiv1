@@ -2,7 +2,7 @@ package fss.repository;
 
 
 import fss.model.Product;
-import fss.api.response.ProductSummary;
+import fss.api.response.product.ProductList;
 import jakarta.data.repository.Delete;
 import jakarta.data.repository.Find;
 import jakarta.data.repository.Insert;
@@ -46,6 +46,6 @@ public interface ProductRepository {
            where trim(category) != "" and ppl.id.idLista = :idLista and ppl.id.idProducto=p.id
            order by name
     """)        
-    List<ProductSummary> findAllProductsSummarize(@Param("idLista") int idLista);
+    List<ProductList> findAllProductsSummarize(@Param("idLista") int idLista);
     
 }

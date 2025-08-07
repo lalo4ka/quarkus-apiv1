@@ -5,7 +5,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.ForeignKey;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapsId;
@@ -28,13 +27,13 @@ import lombok.NoArgsConstructor;
 public class OrderDetail {
 
     @EmbeddedId
-    private OrderDetailPK id;    
-    
+    private OrderDetailPK id;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("orderId")
-    @JoinColumn(name = "id_producto")    
+    @JoinColumn(name = "id_producto")
     public Product product;
-            
+
     @ManyToOne(fetch = FetchType.LAZY)
     @MapsId("productId")
     @JoinColumn(name = "id_pedido")
@@ -51,8 +50,8 @@ public class OrderDetail {
 
     @Column(name = "precio")
     public BigDecimal unitPrice;
-    
-    @Transient    
+
+    @Transient
     public BigDecimal totalAmount;
 
     @Override
@@ -60,9 +59,11 @@ public class OrderDetail {
         return "OrderDetail{" + "product=" + product + ", qty=" + qty + ", qty2=" + qty2 + ", unit=" + unit + ", unitPrice=" + unitPrice + ", totalAmount=" + totalAmount + '}';
     }
 
-    
     @PostLoad //Event::After an entity has been loaded from DB
     public void onPostLoad() {
+        if (qty2 == null) {
+            totalAmount = BigDecimal.ZERO;
+        }
         totalAmount = qty2.multiply(unitPrice);
     }
 

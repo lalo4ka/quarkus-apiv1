@@ -1,6 +1,6 @@
 package fss.service;
 
-import fss.api.response.ProductSummary;
+import fss.api.response.product.ProductList;
 import fss.repository.ProductRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -38,8 +38,8 @@ public class ProductService {
 //        return productRepository.findAll().toList(); // Convierte el Stream a List
 //    }
      @Transactional
-    public List<ProductSummary> getAllProductSummarize() {
-        List<ProductSummary> products;
+    public List<ProductList> getAllProductSummarize() {
+        List<ProductList> products;
         try {
             products = productRepository.findAllProductsSummarize(1);
         } catch (Exception ex) {

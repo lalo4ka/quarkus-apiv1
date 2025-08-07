@@ -50,7 +50,7 @@ public class Customer {
     @JoinColumn(name = "lista")
     public PriceList priceList;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true) // mappedBy="customer" indica que el campo 'customer' en la clase Order es el lado propietario de la FK (customer_id)
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY) // mappedBy="customer" indica que el campo 'customer' en la clase Order es el lado propietario de la FK (customer_id)
     public List<Order> orders;
 
     @Override

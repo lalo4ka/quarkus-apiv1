@@ -1,8 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package fss.api.response;
+package fss.api.response.customer;
 
 import com.blazebit.persistence.view.CollectionMapping;
 import com.blazebit.persistence.view.EntityView;
@@ -48,7 +44,10 @@ record OrderDetailView(
         BigDecimal qty2) {
 
     public BigDecimal totalAmount() {
-        return this.totalAmount.setScale(2, RoundingMode.HALF_UP);       
+        if (totalAmount == null) {
+            return BigDecimal.ZERO;
+        }
+        return this.totalAmount.setScale(2, RoundingMode.HALF_UP);
     }
 
 }

@@ -5,6 +5,7 @@ import jakarta.data.repository.Delete;
 import jakarta.data.repository.Find;
 import jakarta.data.repository.Insert;
 import jakarta.data.repository.OrderBy;
+import jakarta.data.repository.Param;
 import jakarta.data.repository.Query;
 import jakarta.data.repository.Repository;
 import jakarta.data.repository.Save;
@@ -43,6 +44,7 @@ public interface CustomerRepository {
     Customer upsert(Customer c);        
     
     @Delete
-    void delete(Customer c);        
+    void delete(Customer c);       
+        
 
 }

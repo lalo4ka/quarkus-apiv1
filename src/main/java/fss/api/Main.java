@@ -1,4 +1,4 @@
-package fss;
+package fss.api;
 
 import io.quarkus.runtime.Quarkus;
 import io.quarkus.runtime.annotations.QuarkusMain;

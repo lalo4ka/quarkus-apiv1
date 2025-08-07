@@ -1,4 +1,4 @@
-package fss.api;
+package fss.api.resource;
 
 import fss.service.ProductService;
 import jakarta.inject.Inject;
